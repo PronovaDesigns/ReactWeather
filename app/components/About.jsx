@@ -14,7 +14,8 @@ var React = require('react');
 // This can only be done with presentational components that do not maintain any state and only has a render function.
 var About = () => {
   return (
-    <h3>About Component</h3>
+    <h3>About</h3>
+    <p>Welcome to the About page</p>
   )
 };
 
