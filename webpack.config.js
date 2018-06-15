@@ -1,10 +1,27 @@
 // This file mimics the manual command line processing to allow for scalability
+var webpack = require('webpack');
 
 module.exports = {
 
-  // Argument one -- location of the web app's root file
-  entry: './app/app.jsx',
-  // Argument two -- location and name for bundle
+  // Location of scripts for jquery and foundation
+  // Location of the web app's root file
+  entry: [
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
+    './app/app.jsx'
+  ],
+  externals: {
+    jquery: 'jQuery'
+  },
+  // Whenever the keys of those object are used in the cose they will use the corresponding value
+  plugins: [
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
+
+  // Location and name for bundle
   output: {
     path: __dirname,
     filename: './public/bundle.js'

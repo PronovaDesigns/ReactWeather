@@ -13,7 +13,7 @@ var Nav = require('Nav');
 //   }
 // });
 
-// This is a good opportunity to use a Stateless Functional Component because, the app.jsx file mananges the state, while this component only presents the website pages.
+// This is a good opportunity to use a Stateless Functional Component because, the app.jsx & Weather.jsx file mananges the state, while this component only presents the website pages.
 var Main = (props) => {
   return (
     <div>

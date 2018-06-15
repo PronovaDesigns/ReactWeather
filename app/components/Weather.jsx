@@ -16,7 +16,7 @@ var Weather = React.createClass({
   handleSearch: function (location) {
     var that = this;
 
-    debugger; // Sets a debugging breakpoint to inspect with React Developer Tools -- app will automatically pause here for inspection.
+    // debugger; // Sets a debugging breakpoint to inspect with React Developer Tools -- app will automatically pause here for inspection.
 
     // Sets isLoading state variable to true to trigger the conditional rendering of the loading message.
     this.setState({isLoading: true});
