@@ -2,7 +2,9 @@ var React = require('react');
 
 var WeatherForm = require('WeatherForm');
 var WeatherMessage = require('WeatherMessage');
+var ErrorModal = require('ErrorModal');
 var openWeatherMap = require('openWeatherMap');
+
 
 var Weather = React.createClass({
 
@@ -19,7 +21,10 @@ var Weather = React.createClass({
     // debugger; // Sets a debugging breakpoint to inspect with React Developer Tools -- app will automatically pause here for inspection.
 
     // Sets isLoading state variable to true to trigger the conditional rendering of the loading message.
-    this.setState({isLoading: true});
+    this.setState({
+      isLoading: true,
+      errorMessage: undefined
+    });
 
     openWeatherMap.getTemp(location).then(function (temp) {
 
@@ -30,15 +35,18 @@ var Weather = React.createClass({
         // Sets isLoading state variable to false to release the loading message when responds.
         isLoading: false
       });
-    }, function (errorMessage) {
+    }, function (e) {
         // When only setting the state for one state variable -- use this one line code structure.
-        that.setState({isLoading: false});
+        that.setState({
+          isLoading: false,
+          errorMessage: e.message
+        });
         alert(errorMessage);
     });
   },
 
   render: function () {
-    var {isLoading, temp, location} = this.state;
+    var {isLoading, temp, location, errorMessage} = this.state;
 
     // This nested function allows for the component's render function to conditionally render different elements.
     // Given a component's state we can decide which element to render. State is used to conditionally render.
@@ -53,11 +61,20 @@ var Weather = React.createClass({
       }
     }
 
+    function renderError () {
+      if (typeof errorMessage === 'string') {
+        return (
+          <ErrorModal message={errorMessage} />
+        )
+      }
+    }
+
     return (
       <div>
         <h1 className="text-center">Get Weather</h1>
         <WeatherForm onSearch={this.handleSearch} />
         {renderMessage()}
+        {renderError()}
       </div>
     )
   }
