@@ -5,7 +5,7 @@ var React = require('react');
 var About = () => {
   return (
     <div>
-      <h1 className='text-center'>About Me!</h1>
+      <h1 className='text-center page-title'>About Me!</h1>
       <p className='text-center'>I am a Product Manager & Full Stack Developer.</p>
       <p className='text-center'>I am learning how to use React for developing Web Apps.</p>
       <h3 className='text-center'>Areas of Expertise</h3>

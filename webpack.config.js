@@ -41,7 +41,8 @@ module.exports = {
       WeatherMessage: 'app/components/WeatherMessage.jsx',
       WeatherForm: 'app/components/WeatherForm.jsx',
       openWeatherMap: 'app/api/openWeatherMap.jsx',
-      ErrorModal: 'app/components/ErrorModal.jsx'
+      ErrorModal: 'app/components/ErrorModal.jsx',
+      applicationStyles: 'app/styles/app.css'
     },
 
     // The types of file extensions that we want to work with

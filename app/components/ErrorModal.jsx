@@ -7,13 +7,14 @@ var ErrorModal = React.createClass({
       title: 'Error'
     };
   },
-
+  // Here is where you can define the component's prop types.
   propTypes: {
     title: React.PropTypes.string,
     message: React.PropTypes.string.isRequired
   },
   // This is called whenever the render function of this component is updated on the DOM.
   componentDidMount: function () {
+    // The modal feature of Foundation requires a javascript function to run called Reveal whenever this modal component is rendered to the DOM.
     var modal = new Foundation.Reveal($('#error-modal'));
     modal.open();
   },

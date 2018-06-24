@@ -23,6 +23,7 @@ var Weather = React.createClass({
     // Sets isLoading state variable to true to trigger the conditional rendering of the loading message.
     this.setState({
       isLoading: true,
+      // This state is set here to clear any previous error messages.
       errorMessage: undefined
     });
 
@@ -35,8 +36,8 @@ var Weather = React.createClass({
         // Sets isLoading state variable to false to release the loading message when responds.
         isLoading: false
       });
+      // We use the 'e' argument becuase the Reveal Foundation modal uses a javascript function.
     }, function (e) {
-        // When only setting the state for one state variable -- use this one line code structure.
         that.setState({
           isLoading: false,
           errorMessage: e.message
@@ -71,7 +72,7 @@ var Weather = React.createClass({
 
     return (
       <div>
-        <h1 className="text-center">Get Weather</h1>
+        <h1 className="text-center page-title">Get Weather</h1>
         <WeatherForm onSearch={this.handleSearch} />
         {renderMessage()}
         {renderError()}
