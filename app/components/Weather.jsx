@@ -60,6 +60,7 @@ var Weather = React.createClass({
   },
 
   // This built-in function triggers whenever the props of a component change -- a parent component can change the props of child.
+  // When you search from the nav search on the Home screen, it is not mounting so does not know to update -- this function updates when the props change.
   componentWillReceiveProps: function (newProps) {
     var location = newProps.location.query.location;
 
