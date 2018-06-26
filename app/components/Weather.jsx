@@ -24,7 +24,9 @@ var Weather = React.createClass({
     this.setState({
       isLoading: true,
       // This state is set here to clear any previous error messages.
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     });
 
     openWeatherMap.getTemp(location).then(function (temp) {
@@ -44,6 +46,28 @@ var Weather = React.createClass({
         });
         alert(errorMessage);
     });
+  },
+
+  componentDidMount: function () {
+    // This pulls the query from the url suffix
+    var location = this.props.location.query.location;
+
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      //Set the hash tracking in the url to home
+      window.location.hash = '#/';
+    }
+  },
+
+  // This built-in function triggers whenever the props of a component change -- a parent component can change the props of child.
+  componentWillReceiveProps: function (newProps) {
+    var location = newProps.location.query.location;
+
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      // Set the hash tracking in the url to home
+      window.location.hash = '#/';
+    }
   },
 
   render: function () {
